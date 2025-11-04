@@ -8,9 +8,10 @@ function App() {
             <Title>Styled-components <span>.attrs</span> method</Title>
 
             <Form>
+                <Field placeholder='text' title='TITLE'/>
+                <Field placeholder='pass' type='password'/>
                 <Field/>
-                <Field/>
-                <Field/>
+                <Checkbox/>
             </Form>
         </div>
     );
@@ -23,7 +24,7 @@ const Title = styled.h1`
     text-align: center;
     margin-bottom: 32px;
     span {
-        color: #e91e63;
+        color: #46ce8fff;
     }
 `;
 
@@ -32,9 +33,13 @@ const Form = styled.form`
   max-width: 500px;
 `;
 
-const Field = styled.input`
+const Field = styled.input.attrs((props)=>({
+    placeholder: props.placeholder || 'attrs',
+}))`
   padding: 5px 15px;
   margin: 10px 0;
   width: 100%;
   font-size: 1rem;
 `;
+
+const Checkbox = styled.input.attrs(()=>({type: 'checkbox'}))``;
